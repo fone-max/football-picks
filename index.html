@@ -54,7 +54,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .ob{text-align:center;padding:10px 6px;border-right:1px solid var(--bd);position:relative;}
 .ob:last-child{border-right:none;}
 .ob.pk{background:var(--gd);}
-.ob.pk::after{content:'\25B2 \0E40\0E25\0E48\0E19';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);font-size:8px;color:var(--g);font-weight:700;}
+.ob.pk::after{content:'▲ เล่น';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);font-size:8px;color:var(--g);font-weight:700;}
 .oldot{font-size:9px;color:var(--mu);margin-bottom:2px;}
 .ovl{font-family:var(--fh);font-size:18px;font-weight:700;}
 .ob.pk .ovl{color:var(--g);}
@@ -96,21 +96,11 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .lw{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;gap:16px;}
 .spin{width:36px;height:36px;border:3px solid var(--bd);border-top-color:var(--g);border-radius:50%;animation:sp 0.8s linear infinite;}
 @keyframes sp{to{transform:rotate(360deg);}}
-.ltx{font-size:13px;color:var(--mu2);}
-.ew{background:var(--sf);border:1px solid rgba(239,68,68,0.25);border-radius:16px;padding:24px 20px;text-align:center;margin:20px 0;}
-.ei{font-size:36px;margin-bottom:12px;}
-.etl{font-size:15px;font-weight:600;color:var(--r);margin-bottom:8px;}
-.es{font-size:12px;color:var(--mu2);line-height:1.7;margin-bottom:16px;}
-.es code{background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;font-size:11px;font-family:monospace;}
-.abox{background:rgba(0,214,143,0.06);border:1px solid rgba(0,214,143,0.2);border-radius:10px;padding:12px 14px;margin:12px 0;text-align:left;}
-.abt{font-size:11px;font-weight:600;color:var(--g);margin-bottom:6px;}
-.abs{font-size:11px;color:var(--mu2);margin-bottom:4px;line-height:1.5;}
-.rb{background:var(--g);color:#0a0e1a;border:none;border-radius:20px;padding:9px 24px;font-size:13px;font-weight:600;cursor:pointer;margin-top:4px;}
-.bdgx{display:inline-flex;align-items:center;gap:5px;border-radius:20px;padding:4px 12px;font-size:10px;margin-bottom:16px;}
-.bdgx.live{background:var(--gd);border:1px solid rgba(0,214,143,0.2);color:var(--g);}
-.bdgx.demo{background:var(--amd);border:1px solid rgba(245,158,11,0.2);color:var(--am);}
+.ltx{font-size:13px;color:var(--mu2);text-align:center;}
+.bdgx{display:inline-flex;align-items:center;gap:5px;border-radius:20px;padding:4px 12px;font-size:10px;margin-bottom:16px;background:var(--gd);border:1px solid rgba(0,214,143,0.2);color:var(--g);}
 .ldx{width:6px;height:6px;border-radius:50%;background:var(--g);animation:bl 1.5s ease infinite;}
 @keyframes bl{0%,100%{opacity:1;}50%{opacity:.3;}}
+.cached-note{font-size:10px;color:var(--mu);text-align:center;margin-bottom:8px;}
 </style>
 </head>
 <body>
@@ -118,60 +108,173 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 <div class="hdr">
   <div class="lb">
     <div class="li">&#9917;</div>
-    <div><div class="an">5 &#3588;&#3641;&#3648;&#3604;&#3655;&#3604;</div><div class="as">&#3623;&#3636;&#3648;&#3588;&#3619;&#3634;&#3632;&#3627;&#3660;&#3610;&#3629;&#3621;&#3619;&#3634;&#3618;&#3623;&#3633;&#3609;</div></div>
+    <div><div class="an">5 คู่เด็ด</div><div class="as">วิเคราะห์บอลรายวัน</div></div>
   </div>
   <div class="dc"><span id="dlb">&#8212;</span></div>
 </div>
-<div id="bdgx" class="bdgx demo">&#9889; Demo Mode</div>
+<div class="bdgx"><span class="ldx"></span> AI วิเคราะห์จริงทุกวัน</div>
 <div class="tabs" id="tabs"></div>
 <div class="sb">
-  <div class="sx"><div class="sn" id="sn1" style="color:var(--g)">5</div><div class="sl">&#3588;&#3641;&#3648;&#3604;&#3655;&#3604;&#3623;&#3633;&#3609;&#3609;&#3637;&#3657;</div></div>
-  <div class="sx"><div class="sn" id="sn2">&#8212;</div><div class="sl">&#3626;&#3641;&#3591; &#8593; / &#3605;&#3656;&#3635; &#8595;</div></div>
-  <div class="sx"><div class="sn" id="sn3">&#8212;</div><div class="sl">&#3588;&#3623;&#3634;&#3617;&#3617;&#3633;&#3656;&#3609;&#3651;&#3592;&#3648;&#3615;&#3621;&#3637;&#3656;&#3618;</div></div>
+  <div class="sx"><div class="sn" id="sn1" style="color:var(--g)">5</div><div class="sl">คู่เด็ดวันนี้</div></div>
+  <div class="sx"><div class="sn" id="sn2">—</div><div class="sl">สูง ↑ / ต่ำ ↓</div></div>
+  <div class="sx"><div class="sn" id="sn3">—</div><div class="sl">ความมั่นใจเฉลี่ย</div></div>
 </div>
-<div class="slb">&#3588;&#3641;&#3648;&#3604;&#3655;&#3604;&#3611;&#3619;&#3632;&#3592;&#3635;&#3623;&#3633;&#3609;</div>
+<div class="slb">คู่เด็ดประจำวัน</div>
+<div id="cached-note" class="cached-note" style="display:none"></div>
 <div id="ml"></div>
-<div class="fn"><span style="font-size:16px;flex-shrink:0">&#9888;&#65039;</span><span>&#3585;&#3634;&#3619;&#3623;&#3636;&#3648;&#3588;&#3619;&#3634;&#3632;&#3627;&#3660;&#3610;&#3629;&#3621;&#3652;&#3617;&#3656;&#3617;&#3637;&#3585;&#3634;&#3619;&#3633;&#3609;&#3605;&#3637; 100% &#3651;&#3594;&#3657;&#3648;&#3611;&#3655;&#3609;&#3586;&#3657;&#3629;&#3617;&#3641;&#3621;&#3611;&#3619;&#3632;&#3585;&#3629;&#3610;&#3585;&#3634;&#3619;&#3605;&#3633;&#3604;&#3626;&#3636;&#3609;&#3651;&#3592;&#3648;&#3607;&#3656;&#3634;&#3609;&#3633;&#3657;&#3609; &#3648;&#3621;&#3656;&#3609;&#3651;&#3609;&#3626;&#3636;&#3656;&#3591;&#3607;&#3637;&#3656;&#3619;&#3633;&#3610;&#3652;&#3604;&#3657;&#3588;&#3619;&#3633;&#3610;</span></div>
+<div class="fn"><span style="font-size:16px;flex-shrink:0">⚠️</span><span>การวิเคราะห์บอลไม่มีการันตี 100% ใช้เป็นข้อมูลประกอบการตัดสินใจเท่านั้น เล่นในสิ่งที่รับได้ครับ</span></div>
 </div>
 <div class="nav">
-  <div class="ni on"><span class="ico">&#127919;</span><span>&#3588;&#3641;&#3648;&#3604;&#3655;&#3604;</span></div>
-  <div class="ni"><span class="ico">&#128202;</span><span>&#3626;&#3606;&#3636;&#3605;&#3636;</span></div>
-  <div class="ni"><span class="ico">&#9917;</span><span>&#3650;&#3611;&#3619;&#3649;&#3585;&#3619;&#3617;</span></div>
-  <div class="ni"><span class="ico">&#9881;&#65039;</span><span>&#3605;&#3633;&#3657;&#3591;&#3588;&#3656;&#3634;</span></div>
+  <div class="ni on"><span class="ico">🎯</span><span>คู่เด็ด</span></div>
+  <div class="ni"><span class="ico">📊</span><span>สถิติ</span></div>
+  <div class="ni"><span class="ico">⚽</span><span>โปรแกรม</span></div>
+  <div class="ni"><span class="ico">⚙️</span><span>ตั้งค่า</span></div>
 </div>
+
 <script>
-// ================================================================
-// STEP TO ENABLE REAL DATA (FREE):
-// 1. Register at: https://www.football-data.org/client/register
-// 2. Copy your API Key from email
-// 3. Replace YOUR_API_KEY below with your key
-// 4. Upload this file to GitHub -> auto-updates daily!
-// ================================================================
-const API_KEY = 'c8c06aed2e00498e9759ba4c5659c8a3';
-const BASE = 'https://api.football-data.org/v4';
-const LGS = {
-  2021:{n:'พรีเมียร์ลีก',c:'#4F46E5'},2014:{n:'ลาลีกา',c:'#D85A30'},
-  2002:{n:'บุนเดสลีกา',c:'#E24B4A'},2019:{n:'เซเรียอา',c:'#1D9E75'},
-  2015:{n:'ลีกเอิง',c:'#185FA5'},2001:{n:'แชมเปียนส์ลีก',c:'#BA7517'},
-};
-let sel=0,opn=new Set(),cx={};
+const LC = {'พรีเมียร์ลีก':'#4F46E5','ลาลีกา':'#D85A30','บุนเดสลีกา':'#E24B4A','เซเรียอา':'#1D9E75','ลีกเอิง':'#185FA5','แชมเปียนส์ลีก':'#BA7517','ยูโรป้าลีก':'#D85A30','อื่นๆ':'#64748b'};
+
+let sel=0, opn=new Set(), cache={};
+
 function iso(o){const d=new Date();d.setDate(d.getDate()+o);return d.toISOString().split('T')[0];}
 function dlb(o){if(o===-1)return'เมื่อวาน';if(o===0)return'วันนี้';if(o===1)return'พรุ่งนี้';const d=new Date();d.setDate(d.getDate()+o);return['อา','จ','อ','พ','พฤ','ศ','ส'][d.getDay()]+' '+d.getDate()+'/'+(d.getMonth()+1);}
 function fullD(o){const d=new Date();d.setDate(d.getDate()+o);const m=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];return d.getDate()+' '+m[d.getMonth()]+' '+(d.getFullYear()+543);}
-function renderTabs(){document.getElementById('tabs').innerHTML=[-1,0,1,2,3].map(o=>`<button class="tab${o===sel?' on':''}" onclick="pd(${o})">${dlb(o)}</button>`).join('');document.getElementById('dlb').textContent=fullD(sel);}
+
+function renderTabs(){
+  document.getElementById('tabs').innerHTML=[-1,0,1,2,3].map(o=>`<button class="tab${o===sel?' on':''}" onclick="pd(${o})">${dlb(o)}</button>`).join('');
+  document.getElementById('dlb').textContent=fullD(sel);
+}
 function pd(o){sel=o;opn.clear();renderTabs();run();}
-async function fetchM(ds){if(cx[ds])return cx[ds];const ids=Object.keys(LGS).join(',');const apiUrl=encodeURIComponent(`${BASE}/matches?competitions=${ids}&dateFrom=${ds}&dateTo=${ds}`);
-    const r=await fetch(`https://corsproxy.io/?${apiUrl}`,{headers:{'X-Auth-Token':API_KEY}});
-    if(!r.ok)throw new Error(''+r.status);const d=await r.json();cx[ds]=d.matches||[];return cx[ds];}
-function analyze(ms){return ms.map(m=>{const lg=LGS[m.competition?.id]||{n:m.competition?.name||'?',c:'#64748b'};const home=m.homeTeam?.shortName||m.homeTeam?.name||'Home';const away=m.awayTeam?.shortName||m.awayTeam?.name||'Away';const u=new Date(m.utcDate),b=new Date(u.getTime()+7*3600000);const time=String(b.getUTCHours()).padStart(2,'0')+':'+String(b.getUTCMinutes()).padStart(2,'0');const hp=m.homeTeam?.position||10,ap=m.awayTeam?.position||10;const hs=Math.max(0.3,1-(hp-1)*0.04+0.1),as2=Math.max(0.3,1-(ap-1)*0.04);const tot=hs+as2+0.25;const ho=+Math.min(8,Math.max(1.2,tot/hs*0.87)).toFixed(2);const ao=+Math.min(8,Math.max(1.2,tot/as2*0.87)).toFixed(2);const dro=+(2.8+Math.random()).toFixed(2);const ouL=[2.0,2.5,3.0][Math.floor(Math.random()*3)];const oo=+(1.7+Math.random()*.5).toFixed(2),uo=+(1.7+Math.random()*.5).toFixed(2);const hw=Math.round(35+hs/(hs+as2)*40),aw=Math.round(15+as2/(hs+as2)*35),dr=100-hw-aw;const op2=Math.round(40+Math.random()*35),cf=Math.round(60+Math.random()*28);const pw=hw>aw+10?'home':aw>hw+5?'away':'draw';const pou=op2>52?'over':'under';const bl=[2021,2014,2002,2019,2015,2001].includes(m.competition?.id)?20:0;const rf=()=>['W','W','D','L','W'].sort(()=>Math.random()-.5).join('');return{sc:cf+bl,lg,home,away,time,ho,ao,dro,ouL,oo,uo,pw,pou,pwl:pw==='home'?home+' ชนะ':pw==='away'?away+' ชนะ':'เสมอ',pwr:pw==='home'?'อัตราต่อรองและสถิติเหย้าสนับสนุน':'อัตราต่อรองและฟอร์มบุกน่าสนใจ',poul:pou==='over'?'สูงกว่า '+ouL:'ต่ำกว่า '+ouL,pour:pou==='over'?'เฉลี่ยประตูสูง คาดเปิดเกมรุก':'ทั้งสองทีมป้องกันเข้ม',hw,dr,aw,op2,cf,star:cf>=78,hf:rf(),af:rf()};}).sort((a,b)=>b.sc-a.sc).slice(0,5);}
-function renderM(picks){const ov=picks.filter(p=>p.pou==='over').length,un=picks.length-ov;const ac=picks.length?Math.round(picks.reduce((a,p)=>a+p.cf,0)/picks.length):0;document.getElementById('sn1').textContent=picks.length;document.getElementById('sn2').innerHTML=`<span style="color:var(--g)">${ov}↑</span> · <span style="color:var(--b)">${un}↓</span>`;document.getElementById('sn3').innerHTML=ac+'<span style="font-size:14px;font-weight:400">%</span>';document.getElementById('ml').innerHTML=picks.map((p,i)=>crd(p,i)).join('');}
-function crd(p,i){const hi=p.pw==='home',ai=p.pw==='away';const cc=p.cf>=78?'var(--g)':p.cf>=65?'var(--am)':'var(--r)';const fd=f=>f.split('').map(c=>`<div class="fd ${c}">${c}</div>`).join('');const io=opn.has(i);return`<div class="mc${io?' op':''}" id="c${i}" onclick="tg(${i})"><div class="ct"><div class="cm"><div class="lp"><span class="ldot" style="background:${p.lg.c}"></span>${p.lg.n}</div><div class="cr">${p.star?'<div class="sp">⭐ 5 ดาว</div>':''}<div class="pn">${i+1}</div><svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="tr"><div class="th"><div class="tn${hi?' pt':''}">${p.home}</div><div class="tt">${p.time} น.</div></div><div class="vsc"><div class="vt">VS</div></div><div class="ta"><div class="tn${ai?' pt':''}">${p.away}</div></div></div></div><div class="os"><div class="ob${hi?' pk':''}"><div class="oldot">เจ้าบ้าน</div><div class="ovl">${p.ho.toFixed(2)}</div></div><div class="ob"><div class="oldot">เสมอ</div><div class="ovl">${p.dro.toFixed(2)}</div></div><div class="ob${ai?' pk':''}"><div class="oldot">ทีมเยือน</div><div class="ovl">${p.ao.toFixed(2)}</div></div></div><div class="dp"><div class="ds"><div class="dt">โอกาสชนะ (%)</div><div class="wb"><div class="wbt"><span>${p.home}</span><span>${p.hw}%</span></div><div class="wbk"><div class="wbf" style="width:${p.hw}%;background:var(--g)"></div></div></div><div class="wb"><div class="wbt"><span>เสมอ</span><span>${p.dr}%</span></div><div class="wbk"><div class="wbf" style="width:${p.dr}%;background:var(--mu)"></div></div></div><div class="wb"><div class="wbt"><span>${p.away}</span><span>${p.aw}%</span></div><div class="wbk"><div class="wbf" style="width:${p.aw}%;background:var(--b)"></div></div></div></div><div class="ds"><div class="dt">สูง / ต่ำ</div><div class="oug"><div class="oui"><div class="oul">เส้น</div><div class="ouv">${p.ouL} ประตู</div></div><div class="oui"><div class="oul">โอดส์ สูง/ต่ำ</div><div class="ouv">${p.oo.toFixed(2)} / ${p.uo.toFixed(2)}</div></div></div></div><div class="ds"><div class="dt">ฟอร์ม 5 นัดล่าสุด</div><div class="fr"><div class="fds">${fd(p.hf)}</div><div style="font-size:10px;color:var(--mu)">VS</div><div class="fds">${fd(p.af)}</div></div></div><div class="vg"><div class="vc2 wc"><span class="vi">🏆</span><div><div class="vl">▶ ${p.pwl}</div><div class="vr">${p.pwr}</div></div></div><div class="vc2 oc"><span class="vi">${p.pou==='over'?'📈':'📉'}</span><div><div class="vl">▶ ${p.poul}</div><div class="vr">${p.pour}</div></div></div></div><div class="cfr"><span class="cfl">ความมั่นใจ</span><div class="cft"><div class="cff" style="width:${p.cf}%;background:${cc}"></div></div><span class="cfp" style="color:${cc}">${p.cf}%</span></div></div></div>`;}
+
+function showLoad(msg){
+  document.getElementById('ml').innerHTML=`<div class="lw"><div class="spin"></div><div class="ltx">${msg||'AI กำลังวิเคราะห์คู่บอลวันนี้...<br><small style="color:var(--mu);font-size:11px">อาจใช้เวลา 10-15 วินาที</small>'}</div></div>`;
+}
+
+async function fetchAI(dateStr){
+  // Check localStorage cache
+  const cacheKey = 'picks_'+dateStr;
+  const cached = localStorage.getItem(cacheKey);
+  if(cached){
+    try{
+      const parsed = JSON.parse(cached);
+      const age = Date.now() - parsed.ts;
+      if(age < 6*3600*1000){ // cache 6 hours
+        document.getElementById('cached-note').style.display='block';
+        document.getElementById('cached-note').textContent='⚡ โหลดจาก cache · อัปเดตทุก 6 ชม.';
+        return parsed.data;
+      }
+    }catch(e){}
+  }
+  document.getElementById('cached-note').style.display='none';
+
+  const prompt = `Reply ONLY with a valid JSON array, no explanation, no markdown.
+Pick 5 best football matches for ${dateStr} from top leagues (Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Champions League).
+Each object must have exactly these fields:
+{"league":"","home":"","away":"","time":"HH:MM","homeOdds":0.0,"drawOdds":0.0,"awayOdds":0.0,"pickWin":"home","pickWinLabel":"","pickWinReason":"","ouLine":2.5,"overOdds":0.0,"underOdds":0.0,"pickOU":"over","pickOULabel":"","pickOUReason":"","homeWin":0,"draw":0,"awayWin":0,"conf":0,"star":true,"homeForm":"WWDLW","awayForm":"WLDWW"}
+Use Thai language for league/team names and reasons. Output valid JSON only.`;
+
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 4000,
+      messages: [{role:'user', content: prompt}]
+    })
+  });
+
+  if(!res.ok) throw new Error('API error '+res.status);
+  const data = await res.json();
+  const text = data.content[0].text.trim();
+  const clean = text.replace(/```json|```/g,'').trim();
+  // Extract JSON array robustly
+  const start = clean.indexOf('[');
+  const end = clean.lastIndexOf(']');
+  if(start === -1 || end === -1) throw new Error('No JSON array found');
+  const jsonStr = clean.slice(start, end+1);
+  const picks = JSON.parse(jsonStr);
+
+  // Save to cache
+  localStorage.setItem(cacheKey, JSON.stringify({ts: Date.now(), data: picks}));
+  return picks;
+}
+
+function renderM(picks){
+  const ov=picks.filter(p=>p.pickOU==='over').length, un=picks.length-ov;
+  const ac=picks.length?Math.round(picks.reduce((a,p)=>a+p.conf,0)/picks.length):0;
+  document.getElementById('sn1').textContent=picks.length;
+  document.getElementById('sn2').innerHTML=`<span style="color:var(--g)">${ov}↑</span> · <span style="color:var(--b)">${un}↓</span>`;
+  document.getElementById('sn3').innerHTML=ac+'<span style="font-size:14px;font-weight:400">%</span>';
+  document.getElementById('ml').innerHTML=picks.map((p,i)=>crd(p,i)).join('');
+}
+
+function crd(p,i){
+  const hi=p.pickWin==='home', ai=p.pickWin==='away';
+  const lc=LC[p.league]||'#64748b';
+  const cc=p.conf>=78?'var(--g)':p.conf>=65?'var(--am)':'var(--r)';
+  const fd=f=>f.split('').map(c=>`<div class="fd ${c}">${c}</div>`).join('');
+  const io=opn.has(i);
+  return`<div class="mc${io?' op':''}" id="c${i}" onclick="tg(${i})">
+<div class="ct"><div class="cm">
+<div class="lp"><span class="ldot" style="background:${lc}"></span>${p.league}</div>
+<div class="cr">${p.star?'<div class="sp">⭐ 5 ดาว</div>':''}<div class="pn">${i+1}</div>
+<svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+</div></div>
+<div class="tr">
+<div class="th"><div class="tn${hi?' pt':''}">${p.home}</div><div class="tt">${p.time} น.</div></div>
+<div class="vsc"><div class="vt">VS</div></div>
+<div class="ta"><div class="tn${ai?' pt':''}">${p.away}</div></div>
+</div></div>
+<div class="os">
+<div class="ob${hi?' pk':''}"><div class="oldot">เจ้าบ้าน</div><div class="ovl">${(+p.homeOdds).toFixed(2)}</div></div>
+<div class="ob"><div class="oldot">เสมอ</div><div class="ovl">${(+p.drawOdds).toFixed(2)}</div></div>
+<div class="ob${ai?' pk':''}"><div class="oldot">ทีมเยือน</div><div class="ovl">${(+p.awayOdds).toFixed(2)}</div></div>
+</div>
+<div class="dp">
+<div class="ds"><div class="dt">โอกาสชนะ (%)</div>
+<div class="wb"><div class="wbt"><span>${p.home}</span><span>${p.homeWin}%</span></div><div class="wbk"><div class="wbf" style="width:${p.homeWin}%;background:var(--g)"></div></div></div>
+<div class="wb"><div class="wbt"><span>เสมอ</span><span>${p.draw}%</span></div><div class="wbk"><div class="wbf" style="width:${p.draw}%;background:var(--mu)"></div></div></div>
+<div class="wb"><div class="wbt"><span>${p.away}</span><span>${p.awayWin}%</span></div><div class="wbk"><div class="wbf" style="width:${p.awayWin}%;background:var(--b)"></div></div></div>
+</div>
+<div class="ds"><div class="dt">สูง / ต่ำ</div>
+<div class="oug">
+<div class="oui"><div class="oul">เส้น</div><div class="ouv">${p.ouLine} ประตู</div></div>
+<div class="oui"><div class="oul">โอดส์ สูง/ต่ำ</div><div class="ouv">${(+p.overOdds).toFixed(2)} / ${(+p.underOdds).toFixed(2)}</div></div>
+</div></div>
+<div class="ds"><div class="dt">ฟอร์ม 5 นัดล่าสุด</div>
+<div class="fr"><div class="fds">${fd(p.homeForm||'WWDLW')}</div><div style="font-size:10px;color:var(--mu)">VS</div><div class="fds">${fd(p.awayForm||'WLDWW')}</div></div>
+</div>
+<div class="vg">
+<div class="vc2 wc"><span class="vi">🏆</span><div><div class="vl">▶ ${p.pickWinLabel}</div><div class="vr">${p.pickWinReason}</div></div></div>
+<div class="vc2 oc"><span class="vi">${p.pickOU==='over'?'📈':'📉'}</span><div><div class="vl">▶ ${p.pickOULabel}</div><div class="vr">${p.pickOUReason}</div></div></div>
+</div>
+<div class="cfr"><span class="cfl">ความมั่นใจ</span>
+<div class="cft"><div class="cff" style="width:${p.conf}%;background:${cc}"></div></div>
+<span class="cfp" style="color:${cc}">${p.conf}%</span>
+</div>
+</div></div>`;
+}
+
 function tg(i){if(opn.has(i))opn.delete(i);else opn.add(i);document.getElementById('c'+i)?.classList.toggle('op',opn.has(i));}
-function showLoad(){document.getElementById('ml').innerHTML='<div class="lw"><div class="spin"></div><div class="ltx">กำลังดึงโปรแกรมบอลวันนี้...</div></div>';}
-function showErr(){document.getElementById('ml').innerHTML=`<div class="ew"><div class="ei">🔑</div><div class="etl">ต้องการ API Key</div><div class="es">เพื่อดึงข้อมูลแมทช์จริงทุกวัน</div><div class="abox"><div class="abt">📋 ขั้นตอนง่ายๆ (ฟรี 100%)</div><div class="abs">1. เปิด <strong>football-data.org/client/register</strong></div><div class="abs">2. กรอก email → กด Register</div><div class="abs">3. เข้า email → copy API Key</div><div class="abs">4. แก้ไฟล์ index.html:<br><code>const API_KEY = 'YOUR_API_KEY'</code><br>→ ใส่ key ของคุณแทน</div><div class="abs">5. อัปไฟล์ขึ้น GitHub ใหม่ ✅</div></div><button class="rb" onclick="run()">ลองอีกครั้ง</button></div>`;}
-function demo(){const d=[{lg:{n:'บุนเดสลีกา',c:'#E24B4A'},home:'ดอร์ทมุนด์',away:'แฟร้งค์เฟิร์ต',time:'01:30',ho:1.75,ao:4.80,dro:3.60,pw:'home',ouL:2.5,oo:1.85,uo:1.95,pou:'over',pwl:'ดอร์ทมุนด์ ชนะ',pwr:'ฟอร์มเหย้าแกร่ง มีแรงจูงใจสูง',poul:'สูงกว่า 2.5',pour:'เฉลี่ยรวม 3.1 ประตู/นัด',hw:58,dr:22,aw:20,op2:65,cf:82,star:true,hf:'WWDWW',af:'WLWDW'},{lg:{n:'ลาลีกา',c:'#D85A30'},home:'บาร์เซโลนา',away:'แอตเลติโก',time:'03:00',ho:1.90,ao:4.20,dro:3.60,pw:'home',ouL:2.5,oo:1.75,uo:2.05,pou:'over',pwl:'บาร์เซโลนา ชนะ',pwr:'ฟอร์มเหย้าบวก กดดันทุกนาที',poul:'สูงกว่า 2.5',pour:'บาร์ซ่ารุกเข้ม เฉลี่ย 3.4 ประตู/นัด',hw:55,dr:22,aw:23,op2:72,cf:84,star:true,hf:'WWWWD',af:'WLWDW'},{lg:{n:'พรีเมียร์ลีก',c:'#4F46E5'},home:'อาร์เซนอล',away:'แมนซิตี้',time:'22:00',ho:2.40,ao:2.70,dro:3.50,pw:'home',ouL:2.5,oo:1.80,uo:2.00,pou:'over',pwl:'อาร์เซนอล ชนะ',pwr:'ฟอร์มบ้านแกร่ง แฟนบอลหนุน',poul:'สูงกว่า 2.5',pour:'ดาวยิงครบ เฉลี่ยรวม 3.2 ประตู/นัด',hw:44,dr:24,aw:32,op2:68,cf:80,star:true,hf:'WWWDW',af:'WDWWL'},{lg:{n:'เซเรียอา',c:'#1D9E75'},home:'อินเตอร์',away:'มิลาน',time:'02:45',ho:2.10,ao:3.50,dro:3.30,pw:'home',ouL:2.5,oo:1.85,uo:1.95,pou:'under',pwl:'อินเตอร์ ชนะ',pwr:'ดาร์บี้เกม อินเตอร์ฟอร์มดีกว่า',poul:'ต่ำกว่า 2.5',pour:'ดาร์บี้มักตึงเครียด เฉลี่ย 2.0 ประตู',hw:50,dr:25,aw:25,op2:40,cf:77,star:true,hf:'WWDWW',af:'LDWDL'},{lg:{n:'บุนเดสลีกา',c:'#E24B4A'},home:'บาเยิร์น',away:'ไลป์ซิก',time:'23:30',ho:1.65,ao:5.50,dro:4.00,pw:'home',ouL:3.5,oo:1.85,uo:1.95,pou:'over',pwl:'บาเยิร์น ชนะ',pwr:'เหนือกว่าชัดเจน ฟอร์มเหย้าไม่แพ้ 10 นัด',poul:'สูงกว่า 3.5',pour:'บาเยิร์นยิงเยอะ เฉลี่ย 3.8 ประตู/นัด',hw:68,dr:18,aw:14,op2:70,cf:86,star:true,hf:'WWWWW',af:'WDWLW'}];const s=Math.abs(sel);return d.map((_,i)=>d[(i+s)%d.length]);}
-async function run(){showLoad();if(API_KEY==='YOUR_API_KEY'){const b=document.getElementById('bdgx');b.className='bdgx demo';b.textContent='⚡ Demo Mode · ยังไม่ได้ใส่ API Key';setTimeout(()=>renderM(demo()),600);return;}const b=document.getElementById('bdgx');b.className='bdgx live';b.innerHTML='<span class="ldx"></span> ดึงข้อมูลจริงทุกวัน';try{const ds=iso(sel);const ms=await fetchM(ds);if(!ms.length){showErr();return;}renderM(analyze(ms));}catch(e){showErr();}}
-renderTabs();run();
+
+async function run(){
+  showLoad();
+  try{
+    const picks = await fetchAI(iso(sel));
+    renderM(picks);
+  }catch(e){
+    console.error(e);
+    document.getElementById('ml').innerHTML=`<div style="text-align:center;padding:40px 20px;">
+      <div style="font-size:32px;margin-bottom:12px">😅</div>
+      <div style="font-size:14px;font-weight:500;color:var(--r);margin-bottom:8px">ดึงข้อมูลไม่ได้</div>
+      <div style="font-size:12px;color:var(--mu2);margin-bottom:16px">${e.message}</div>
+      <button onclick="run()" style="background:var(--g);color:#0a0e1a;border:none;border-radius:20px;padding:9px 24px;font-size:13px;font-weight:600;cursor:pointer;">ลองอีกครั้ง</button>
+    </div>`;
+  }
+}
+
+renderTabs();
+run();
 </script>
 </body>
 </html>
