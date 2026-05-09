@@ -132,6 +132,10 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 </div>
 
 <script>
+// ข้อมูลวันที่ 9 พ.ค. 2569 (อัปเดตแล้ว)
+const TODAY_PICKS = [{"league": "พรีเมียร์ลีก", "home": "ลิเวอร์พูล", "away": "เชลซี", "time": "21:00", "homeOdds": 1.75, "drawOdds": 3.8, "awayOdds": 4.5, "pickWin": "home", "pickWinLabel": "ลิเวอร์พูล ชนะ", "pickWinReason": "ฟอร์มเหย้าแข็งแกร่ง คว้าแชมป์ใกล้แล้ว แรงจูงใจสูงมาก", "ouLine": 2.5, "overOdds": 1.85, "underOdds": 1.95, "pickOU": "over", "pickOULabel": "สูงกว่า 2.5", "pickOUReason": "ทั้งสองทีมฟอร์มรุกดี เฉลี่ยรวม 3.2 ประตู/นัด", "homeWin": 58, "draw": 22, "awayWin": 20, "conf": 83, "star": true, "homeForm": "WWWDW", "awayForm": "WDWLW"}, {"league": "พรีเมียร์ลีก", "home": "ไบรท์ตัน", "away": "วูล์ฟแฮมป์ตัน", "time": "21:00", "homeOdds": 1.9, "drawOdds": 3.5, "awayOdds": 4.2, "pickWin": "home", "pickWinLabel": "ไบรท์ตัน ชนะ", "pickWinReason": "ฟอร์มเหย้าดีเยี่ยม วูล์ฟส์ตกชั้นใกล้แล้วแรงจูงใจต่าง", "ouLine": 2.5, "overOdds": 1.88, "underOdds": 1.92, "pickOU": "over", "pickOULabel": "สูงกว่า 2.5", "pickOUReason": "ไบรท์ตันรุกเปิดเกมเสมอ เฉลี่ย 2.8 ประตู/นัดในบ้าน", "homeWin": 62, "draw": 20, "awayWin": 18, "conf": 80, "star": true, "homeForm": "WWWWL", "awayForm": "LLDWL"}, {"league": "พรีเมียร์ลีก", "home": "ซันเดอร์แลนด์", "away": "แมนเชสเตอร์ ยูไนเต็ด", "time": "21:00", "homeOdds": 3.2, "drawOdds": 3.3, "awayOdds": 2.2, "pickWin": "away", "pickWinLabel": "แมนยู ชนะ", "pickWinReason": "แมนยูฟอร์มดีต่อเนื่อง 4 นัด ซันเดอร์แลนด์ขึ้นมาใหม่ยังไม่แกร่งพอ", "ouLine": 2.5, "overOdds": 1.95, "underOdds": 1.85, "pickOU": "under", "pickOULabel": "ต่ำกว่า 2.5", "pickOUReason": "ซันเดอร์แลนด์เกมรับเข้ม เฉลี่ย 1.9 ประตู/นัดที่บ้าน", "homeWin": 28, "draw": 28, "awayWin": 44, "conf": 74, "star": false, "homeForm": "DLWDL", "awayForm": "WWWLW"}, {"league": "บุนเดสลีกา", "home": "สตุ๊ตการ์ท", "away": "เลเวอร์คูเซ่น", "time": "20:30", "homeOdds": 2.8, "drawOdds": 3.3, "awayOdds": 2.5, "pickWin": "away", "pickWinLabel": "เลเวอร์คูเซ่น ชนะ", "pickWinReason": "แชมป์เก่าฟอร์มดี ต้องการแต้มไล่ตามอันดับ 2", "ouLine": 2.5, "overOdds": 1.9, "underOdds": 1.9, "pickOU": "over", "pickOULabel": "สูงกว่า 2.5", "pickOUReason": "เลเวอร์คูเซ่นรุกดุ เฉลี่ยรวม 3.0 ประตู/นัด", "homeWin": 32, "draw": 26, "awayWin": 42, "conf": 76, "star": true, "homeForm": "WDLWL", "awayForm": "WWDWW"}, {"league": "ลาลีกา", "home": "เรอัล โซเซียดาด", "away": "เรอัล เบติส", "time": "02:00", "homeOdds": 2.3, "drawOdds": 3.2, "awayOdds": 3.1, "pickWin": "home", "pickWinLabel": "เรอัล โซเซียดาด ชนะ", "pickWinReason": "แรงเหย้าดี ต้องการ 3 แต้มเพื่อล็อคยูโรป้า", "ouLine": 2.5, "overOdds": 1.95, "underOdds": 1.85, "pickOU": "under", "pickOULabel": "ต่ำกว่า 2.5", "pickOUReason": "ทั้งสองทีมเน้นระวัง เฉลี่ย 2.1 ประตู/นัดในการพบกัน", "homeWin": 44, "draw": 28, "awayWin": 28, "conf": 72, "star": false, "homeForm": "WWDLW", "awayForm": "DLLWW"}];
+const TODAY_DATE = '2026-05-09';
+
 const LC = {'พรีเมียร์ลีก':'#4F46E5','ลาลีกา':'#D85A30','บุนเดสลีกา':'#E24B4A','เซเรียอา':'#1D9E75','ลีกเอิง':'#185FA5','แชมเปียนส์ลีก':'#BA7517','ยูโรป้าลีก':'#D85A30','อื่นๆ':'#64748b'};
 
 let sel=0, opn=new Set(), cache={};
@@ -151,6 +155,11 @@ function showLoad(msg){
 }
 
 async function fetchAI(dateStr){
+  // Use pre-loaded data for today
+  if(dateStr === TODAY_DATE){
+    return TODAY_PICKS;
+  }
+  
   // Check localStorage cache
   const cacheKey = 'picks_'+dateStr;
   const cached = localStorage.getItem(cacheKey);
